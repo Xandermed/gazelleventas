@@ -1,0 +1,15 @@
+{
+    "fecha": "22/11/2021",
+    "cliente":{
+        "id":"61997682542c124163164cbb",
+        "nombre": "james",
+        "apellido": "",
+        "nick": "jjurado"
+        } ,
+    "producto":{
+        "id": "61998e673fffc0132a33a322",
+        "nombreProducto": "labial",
+        "precio": 2500
+        },
+    "cantidad": 10
+}

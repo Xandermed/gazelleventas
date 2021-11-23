@@ -1,4 +1,5 @@
-package gazelle.gazelleventas.Services;
+package com.gazelle.gazelle.Services;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -6,8 +7,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import gazelle.gazelleventas.Models.ClienteModel;
-import gazelle.gazelleventas.Repositories.ClienteRepository;
+import com.gazelle.gazelle.Models.ClienteModel;
+import com.gazelle.gazelle.Repositories.ClienteRepository;
 
 @Service
 public class ClienteService {
@@ -31,8 +32,8 @@ public class ClienteService {
     }
 
     //Método para buscar por username
-    public ClienteModel buscarUsername(String username) {
-        return this.clienteRepository.findByUsername(username).orElse(new ClienteModel());
+    public ClienteModel buscarNick(String nick) {
+        return this.clienteRepository.findByNick(nick.toLowerCase()).orElse(new ClienteModel());
     }
 
 }

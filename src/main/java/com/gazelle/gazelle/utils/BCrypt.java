@@ -1,4 +1,5 @@
-package gazelle.gazelleventas.utils;
+package com.gazelle.gazelle.utils;
+
 
 import java.io.UnsupportedEncodingException;
 import java.security.SecureRandom;
@@ -785,4 +786,3 @@ public class BCrypt{
     return ret == 0;
   }
 }
-

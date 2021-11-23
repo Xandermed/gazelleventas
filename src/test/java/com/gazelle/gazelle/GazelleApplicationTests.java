@@ -1,10 +1,10 @@
-package gazelle.gazelleventas;
+package com.gazelle.gazelle;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GazelleventasApplicationTests {
+class GazelleApplicationTests {
 
 	@Test
 	void contextLoads() {

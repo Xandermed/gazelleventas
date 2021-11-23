@@ -1,4 +1,4 @@
-package gazelle.gazelleventas.Models;
+package com.gazelle.gazelle.Models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -81,12 +81,4 @@ public class ClienteModel {
     public void setHash(String hash) {
         this.hash = hash;
     }
-
-    
-    
-    
-    
-    
-
-
 }

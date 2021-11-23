@@ -1,4 +1,5 @@
-package gazelle.gazelleventas.Controllers;
+package com.gazelle.gazelle.Controllers;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import gazelle.gazelleventas.Models.ClienteModel;
-import gazelle.gazelleventas.Services.ClienteService;
-import gazelle.gazelleventas.utils.BCrypt;
+import com.gazelle.gazelle.Models.ClienteModel;
+import com.gazelle.gazelle.Services.ClienteService;
+import com.gazelle.gazelle.utils.BCrypt;
 
 
 @RestController
@@ -33,7 +34,7 @@ public class ClienteController {
             // Ciframos la contraseña con la clase BCrypt
             cliente.setPassword(BCrypt.hashpw(cliente.getPassword(), BCrypt.gensalt()));
     
-            ClienteModel u = this.clienteService.buscarUsername(cliente.getNick());
+            ClienteModel u = this.clienteService.buscarNick(cliente.getNick());
             if (u.getId() == null) {
                 this.clienteService.guardarUsuario(cliente);
                 respuesta.put("mensaje", "Se agregó correctamente el usuario");
