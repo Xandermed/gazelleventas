@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gazelle.gazelle.Models.CompraModel;
 import com.gazelle.gazelle.Services.CompraService;
+import com.gazelle.gazelle.exceptions.CustomeException;
 
 
 
@@ -42,6 +44,18 @@ public class CompraController {
         public List<CompraModel> mostrar(){
             return compraService.traerTodos();
         }
+
+        public void throwError(Errors error){
+            String mensaje = "";
+            int index = 0; 
+            for (ObjectError e: error.getAllErrors()){
+                if (index > 0){
+                    mensaje += " | ";
+                }
+                mensaje+=String.format("parametro: %s - Mensaje: %s", e.getObjectName(),e.getDefaultMessage());
+            }   
+            throw new CustomeException(mensaje);
+         }
         
        
     
