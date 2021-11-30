@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,6 +26,7 @@ import com.gazelle.gazelle.exceptions.CustomeException;
 
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api")
 public class ProductoController {
 
@@ -40,7 +42,7 @@ public class ProductoController {
             if (u.getId() == null) {
                 this.productoService.guardarProducto(producto);
                 respuesta.put("mensaje", "Se agregó correctamente el producto");
-    
+                respuesta.put("estado", "true");    
             } else {
                 respuesta.put("mensaje", "El producto ya esta registrado");
     
