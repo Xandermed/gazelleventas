@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +27,7 @@ import com.gazelle.gazelle.exceptions.CustomeException;
 import com.gazelle.gazelle.utils.Autorizacion;
 import com.gazelle.gazelle.utils.BCrypt;
 
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api")
 public class ClienteController {
@@ -47,6 +47,7 @@ public class ClienteController {
             if (u.getId() == null) {
                 this.clienteService.guardarUsuario(cliente);
                 respuesta.put("mensaje", "Se agregó correctamente el usuario");
+                respuesta.put("estado", "true");
     
             } else {
                 respuesta.put("mensaje", "El usuario ya esta registrado");
