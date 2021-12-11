@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Component;
 
@@ -16,7 +17,7 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
 
-//@Component
+@Component
 public class Autorizacion implements Filter {
     // Llave de cifrado y descifrado
     public static final String KEY = "HhgcbM41xIRhzxaH1U6kOYBA34znJa94Qb5Ceogy";
@@ -26,9 +27,16 @@ public class Autorizacion implements Filter {
             throws IOException, ServletException {
 
         HttpServletRequest req = (HttpServletRequest) request;
-
+        HttpServletResponse resp = (HttpServletResponse) response;
+        
+        resp.setHeader("Access-Control-Allow-Origin", "*");
+        resp.setHeader("Access-Control-Allow-Headers", "*");
+        resp.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+                
+       
         String url = req.getRequestURI();
         // http://localhost:8080 ------->url
+  
 
         if (url.contains("/api/clientes") || url.contains("/api/clientes/login")) {
             chain.doFilter(request, response);
@@ -43,7 +51,7 @@ public class Autorizacion implements Filter {
             try{
                 //Lectura de carga util del JWT
                 Jws<Claims> claims = Jwts.parser().setSigningKey(KEY).parseClaimsJws(hash);
-                if((url.contains("/api/compras") || url.contains("/api/productos"))&& (!claims.getBody().get("nick").equals(""))){
+                if((url.contains("/api/verificar") || url.contains("/api/compras") || url.contains("/api/productos"))&& (!claims.getBody().get("nick").equals(""))){
                     chain.doFilter(request, response);
                 }
 

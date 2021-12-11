@@ -1,5 +1,7 @@
 package com.gazelle.gazelle.Models;
 
+import java.util.ArrayList;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,22 +12,32 @@ public class CompraModel {
     private String id;
     private String fecha;
     private ClienteModel cliente;
-    private ProductoModel producto;
-    private int cantidad;
+    private ArrayList<ProductoModel> producto;
+    //private ProductoModel producto;
     
     
     public String getId() {
         return id;
     }
+   
+    
+
+    public ArrayList<ProductoModel> getProducto() {
+        return producto;
+    }
+
+
+
+    public void setProducto(ArrayList<ProductoModel> producto) {
+        this.producto = producto;
+    }
+
+
+
     public void setId(String id) {
         this.id = id;
     }
-    public int getCantidad() {
-        return cantidad;
-    }
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
+   
     public String getFecha() {
         return fecha;
     }
@@ -38,12 +50,5 @@ public class CompraModel {
     public void setCliente(ClienteModel cliente) {
         this.cliente = cliente;
     }
-    public ProductoModel getProducto() {
-        return producto;
-    }
-    public void setProducto(ProductoModel producto) {
-        this.producto = producto;
-    }
-
     
 }

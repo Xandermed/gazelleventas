@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,8 +22,7 @@ import com.gazelle.gazelle.Models.CompraModel;
 import com.gazelle.gazelle.Services.CompraService;
 import com.gazelle.gazelle.exceptions.CustomeException;
 
-
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api")
 public class CompraController {

@@ -26,6 +26,11 @@ import com.gazelle.gazelle.Services.ClienteService;
 import com.gazelle.gazelle.exceptions.CustomeException;
 import com.gazelle.gazelle.utils.Autorizacion;
 import com.gazelle.gazelle.utils.BCrypt;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
+
 
 @CrossOrigin("*")
 @RestController
@@ -34,6 +39,18 @@ public class ClienteController {
 
         @Autowired
         ClienteService clienteService;
+
+        /**
+         * 
+         * Metodo para verificar ai el token se encuentra activo
+         */
+       @GetMapping("/verificar")
+        public ResponseEntity<Map<String, Boolean>> validarToken() {
+            Map<String, Boolean> respuesta = new HashMap<>();
+            respuesta.put("ok",true);
+            return ResponseEntity.ok(respuesta);
+        }
+        
 
         @PostMapping("/clientes")
         public ResponseEntity<Map<String, String>> guardar(@Valid @RequestBody ClienteModel cliente, Errors error){
@@ -93,6 +110,10 @@ public class ClienteController {
     
                     auxiliar.setHash(hash);
                     respuesta.put("hash",hash);
+                    respuesta.put("id",auxiliar.getId());
+                    respuesta.put("nombre",auxiliar.getNombre());
+                    respuesta.put("correo",auxiliar.getCorreo());
+                    respuesta.put("nick",auxiliar.getNick());
                 }
             }
             return ResponseEntity.ok(respuesta);

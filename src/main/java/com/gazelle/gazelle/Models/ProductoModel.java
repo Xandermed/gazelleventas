@@ -10,6 +10,7 @@ public class ProductoModel {
     private String id;
     private String nombreProducto;
     private int precio;
+    private int cantidad;
    
     
 
@@ -18,6 +19,12 @@ public class ProductoModel {
     }
     public void setId(String id) {
         this.id = id;
+    }
+    public int getCantidad() {
+        return cantidad;
+    }
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
     public String getNombreProducto() {
         return nombreProducto;

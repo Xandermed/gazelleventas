@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +30,14 @@ import com.gazelle.gazelle.exceptions.CustomeException;
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/api")
+
+
 public class ProductoController {
 
         @Autowired
         ProductoService productoService;
+
+     
 
         @PostMapping("/productos")
         public ResponseEntity<Map<String, String>> guardar(@Valid @RequestBody ProductoModel producto, Errors error){
